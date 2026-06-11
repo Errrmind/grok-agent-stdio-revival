@@ -1,0 +1,19 @@
+[Unit]
+Description=Sovereign stdio JSON-RPC Multi-Agent Supervisor
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=/home/%i/grok-agent-stdio-revival
+ExecStart=/usr/bin/python3 /home/%i/grok-agent-stdio-revival/prototypes/supervisor.py
+Restart=on-failure
+RestartSec=10
+
+# Security hardening (optional but recommended for production)
+# PrivateTmp=true
+# ProtectSystem=strict
+# NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
