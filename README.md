@@ -11,6 +11,7 @@ It directly addresses: Before modern web APIs, what mechanisms enabled composabl
 ## Quick Start (Reproducible on Personal Hardware)
 
 ```bash
+git clone https://github.com/Errrmind/grok-agent-stdio-revival.git
 cd grok-agent-stdio-revival
 
 # Test the core stdio agent (pure stdlib core; optional h5py + numpy for full HDF5 power)
@@ -37,12 +38,26 @@ This launches 8 specialized parallel agents communicating via stdio JSON-RPC wit
 
 See `docs/EXECUTION_REPORT.md` for complete hierarchical multi-phase report, four-path analysis, reproducible commands, edge cases, and modeled execution patterns.
 
+## Testing
+
+```bash
+# Run the lightweight test suite (stdlib only)
+python3 tests/test_agent.py
+
+# Or with pytest if available
+python3 -m pytest tests/ -v
+```
+
+See `CONTRIBUTING.md` for development setup, extension guidelines, and contribution process.
+
 ## Produced Artifacts
 
 - `prototypes/stdio_json_agent.py` — Fully functional, tested JSON-RPC stdio agent with methods for research/analysis, data persistence (HDF5 blackboard with groups/datasets/attributes), mind-sync. Extensible. Core runs with zero dependencies; h5py/numpy optional for advanced numerical/STEM features.
 - `prototypes/supervisor.py` — Central orchestrator that spawns and manages 8 parallel specialized agents (research, data analysis, database persistence, mind-sync, planning, reviewing, validation, execution). Implements auto-routing, result collection, and basic retry logic.
 - `scripts/` — Example daily automation (cron/systemd) for overnight pipelines: research & analysis → persistent rich knowledge store → morning review/compounding.
 - `docs/EXECUTION_REPORT.md` — Detailed report with primary concepts, architecture blueprints, risk modeling, and reproducibility focus.
+- `tests/` — Simple stdlib-based tests for core agent functionality.
+- `CONTRIBUTING.md` — Guidelines for contributors and extenders.
 
 ## Four-Path Summary (Enforced in Design)
 
@@ -121,3 +136,5 @@ For full details, architecture blueprints, and execution models, read `docs/EXEC
 ---
 
 **License**: MIT (see LICENSE)
+
+**Contributing**: See [CONTRIBUTING.md](CONTRIBUTING.md) for how to extend, test, and contribute.
